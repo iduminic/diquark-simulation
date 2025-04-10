@@ -5,4 +5,4 @@ ATLAS_BKG/
 *.root
 *.txt
 .DS_Store
-ATLAS_data*/
+ATLAS_data*
