@@ -2,205 +2,238 @@ version: '3.7'
 
 x-simulation: &simulation-defaults
   image: pythia-delphes:8.310_3.5.0
+  # user: "1002:1002"
   volumes:
-    - ./CMS_data_130_80_semilepto:/home/output
+    - ./ATLAS_data_136_75_semileptonic_electrons_TEST:/home/output
   command: ["/home/run_simulation.sh"]
 
 x-simulation-environment: &simulation-environment
-    NUMBER_OF_EVENTS: "1000"
-    ECM: "13000"
-    MHATMIN: "8000"
+    NUMBER_OF_EVENTS: "100000"
+    ECM: "13600"
+    MHATMIN: "7500"
 
 services:
- 01_gg_bbbar:
+
+  # card_BKG_HardQCD_dijet:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "card_BKG_HardQCD_dijet.cmnd"
+  #   volumes:
+  #     - /data/analysis/iduminic/diquark-simulation-original/diquark-simulation/cards:/home/cards
+
+  # 01_gg_bbbar:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "01_gg_bbbar.cmnd"
+
+  # 02_gg_ccbar:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "02_gg_ccbar.cmnd"
+
+  # 03_gg_gg:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "03_gg_gg.cmnd"
+
+  # 04_qqbar_gg:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "04_qqbar_gg.cmnd"
+
+  # 05_gg_qqbar:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "05_gg_qqbar.cmnd"
+
+  # 06_qg_qg:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "06_qg_qg.cmnd"
+
+  # 07_qqbar_bbbar:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "07_qqbar_bbbar.cmnd"
+
+  # 08_qqbar_ccbar:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "08_qqbar_ccbar.cmnd"
+
+  # 09_qq_qq:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "09_qq_qq.cmnd"
+
+  # 10_qqbar_qqbarNew:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "10_qqbar_qqbarNew.cmnd"
+
+  11_qq_hbb_hadronic:
     <<: *simulation-defaults
     environment:
       <<: *simulation-environment
-      CARD: "01_gg_bbbar.cmnd"
+      CARD: "11_qq_hbb_hadronic.cmnd"
 
- 02_gg_ccbar:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "02_gg_ccbar.cmnd"
+  # 12_gg_hbb_hadronic:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "12_gg_hbb_hadronic.cmnd"
 
- 03_gg_gg:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "03_gg_gg.cmnd"
+  # 13_gg_Hg:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "13_gg_Hg.cmnd"
 
- 04_qqbar_gg:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "04_qqbar_gg.cmnd"
+  # 14_qg_Hq:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "14_qg_Hq.cmnd"
 
- 05_gg_qqbar:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "05_gg_qqbar.cmnd"
+  # 15_qqbar_Hg:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "15_qqbar_Hg.cmnd"
 
- 06_qg_qg:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "06_qg_qg.cmnd"
+  # 16_ff_H:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "16_ff_H.cmnd"
 
- 07_qqbar_bbbar:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "07_qqbar_bbbar.cmnd"
+  # 17_gg_H:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "17_gg_H.cmnd"
 
- 08_qqbar_ccbar:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "08_qqbar_ccbar.cmnd"
+  # 18_ff_HZ:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "18_ff_HZ.cmnd"
 
- 09_qq_qq:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "09_qq_qq.cmnd"
+  # 19_ff_HW:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "19_ff_HW.cmnd"
 
- 10_qqbar_qqbarNew:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "10_qqbar_qqbarNew.cmnd"
+  # 20_ff_Hff:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "20_ff_Hff.cmnd"
 
- 11_qq_Hbbbar_leptonic:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "11_qq_Hbbbar_leptonic.cmnd"
+  # 21_ff_Hff2:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "21_ff_Hff2.cmnd"
 
- 12_gg_Hbbbar_leptonic:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "12_gg_Hbbbar_leptonic.cmnd"
+  # 22_gg_Httbar:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "22_gg_Httbar.cmnd"
 
- 13_gg_Hg:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "13_gg_Hg.cmnd"
+  # 23_qq_Httbar:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "23_qq_Httbar.cmnd"
 
- 14_qg_Hq:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "14_qg_Hq.cmnd"
+  # 24_qg_Hq:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "24_qg_Hq.cmnd"
 
- 15_qqbar_Hg:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "15_qqbar_Hg.cmnd"
+  # 25_ffbar_Wgm:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "25_ffbar_Wgm.cmnd"
 
- 16_ff_H:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "16_ff_H.cmnd"
+  # 26_qg_Wj_hadronic:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "26_qg_Wj_hadronic.cmnd"
 
- 17_gg_H:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "17_gg_H.cmnd"
+  # 27_qqbar_Wj_hadronic:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "27_qqbar_Wj_hadronic.cmnd"
 
- 18_ff_HZ:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "18_ff_HZ.cmnd"
+  # 28_ff_ZW_bkg:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "28_ff_ZW_bkg.cmnd"
 
- 19_ff_HW:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "19_ff_HW.cmnd"
+  # 29_ff_WW_bkg:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "29_ff_WW_bkg.cmnd"
 
- 20_ff_Hff_ZZ:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "20_ff_Hff_ZZ.cmnd"
+  # 29_ff_WW_bkg_semilepto:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "29_ff_WW_bkg_semilepto.cmnd"
 
- 21_ff_Hff_WW:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "21_ff_Hff_WW.cmnd"
+  # 30_ff_gmZgmZ_bkg:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "30_ff_gmZgmZ_bkg.cmnd"
 
- 22_gg_Httbar:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "22_gg_Httbar.cmnd"
+  # 31_gg_ttbar_bkg_hadronic:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "31_gg_ttbar_bkg_hadronic.cmnd"
 
- 23_qq_Httbar:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "23_qq_Httbar.cmnd"
+  # 32_qq_ttbar_bkg_hadronic:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "32_qq_ttbar_bkg_hadronic.cmnd"
 
- 24_qg_Hq:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "24_qg_Hq.cmnd"
+  # 33_ff_gmZgm:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "33_ff_gmZgm.cmnd"
 
- 25_ffbar_Wgm:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "25_ffbar_Wgm.cmnd"
+  # 34_qqbar_gmZg:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "34_qqbar_gmZg.cmnd"
 
- 26_qg_Wj:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "26_qg_Wj.cmnd"
-
- 27_qqbar_Wj:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "27_qqbar_Wj.cmnd"
-
-
- 28_ff_ZW:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "28_ff_ZW.cmnd"
-
- 29_ff_WW:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "29_ff_WW.cmnd"
-
- 30_ff_gmZgmZ:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "30_ff_gmZgmZ.cmnd"
-
- 31_gg_ttbar:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "31_gg_ttbar.cmnd"
-
- 32_qqbar_ttbar:
-    <<: *simulation-defaults
-    environment:
-      <<: *simulation-environment
-      CARD: "32_qqbar_ttbar.cmnd"
+  # 35_qg_gmZq:
+  #   <<: *simulation-defaults
+  #   environment:
+  #     <<: *simulation-environment
+  #     CARD: "35_qg_gmZq.cmnd"

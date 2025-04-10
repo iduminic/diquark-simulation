@@ -1,6 +1,10 @@
 FROM almalinux:9 as builder
 
-RUN dnf update -y
+# RUN useradd -m iduminic
+# USER iduminic
+
+# RUN dnf upgrade -y #deprecated; use dnf upgrade instead
+RUN dnf upgrade -y
 RUN dnf install -y epel-release xxhash-libs wget rsync
 RUN dnf groupinstall -y "Development Tools"
 
@@ -45,9 +49,9 @@ ENV PYTHIA8="/home/pythia8310"
 ENV LD_LIBRARY_PATH="/home/root/lib:/home/pythia8310/lib:${LD_LIBRARY_PATH}"
 
 WORKDIR /home
-COPY cards /home/cards
+# COPY cards /home/cards
+COPY cards_semileptonic_electrons /home/cards_semileptonic_electrons
 COPY run_simulation.sh /home/run_simulation.sh
 RUN chmod +x /home/run_simulation.sh
 RUN mkdir  -p /home/output
 CMD run_simulation.sh | tee output/01_gg_bbar.log
-

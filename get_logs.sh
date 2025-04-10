@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOG_DIR="CMS_logs_130_80_semilepto"
+LOG_DIR="ATLAS_logs_136_75_semileptonic_electrons"
 
 mkdir $LOG_DIR
 
