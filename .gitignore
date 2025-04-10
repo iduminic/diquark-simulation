@@ -5,4 +5,5 @@ ATLAS_BKG/
 *.root
 *.txt
 .DS_Store
-ATLAS_data*
+ATLAS_data_*/
+ATLAS_data_140_70_fullhadro/
